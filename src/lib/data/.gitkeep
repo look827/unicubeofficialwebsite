@@ -1,1 +1,9 @@
+import fs from 'fs';
+import path from 'path';
+
+const dataPath = path.join(process.cwd(), 'src/lib/data');
+
+if (!fs.existsSync(dataPath)) {
+  fs.mkdirSync(dataPath, { recursive: true });
+}
 
