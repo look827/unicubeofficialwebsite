@@ -1,15 +1,19 @@
-import { initializeApp, getApps, getApp } from 'firebase/app';
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  "projectId": "studio-8277363755-4c2a2",
-  "appId": "1:216727523191:web:e2175a22c118a6669a1b72",
-  "apiKey": "AIzaSyBd8hMkCmlvFinA9JyjpoDRcWf0YzqpVa4",
-  "authDomain": "studio-8277363755-4c2a2.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "216727523191"
+  projectId: "studio-8277363755-4c2a2",
+  appId: "1:216727523191:web:e2175a22c118a6669a1b72",
+  apiKey: "AIzaSyBd8hMkCmlvFinA9JyjpoDRcWf0YzqpVa4",
+  authDomain: "studio-8277363755-4c2a2.firebaseapp.com",
+  measurementId: "",
+  messagingSenderId: "216727523191",
 };
 
-// Initialize Firebase
+// Avoid multiple initializations during hot reload
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-export { app };
+// Export Firestore + Storage instances
+export const db = getFirestore(app);
+export const storage = getStorage(app);
