@@ -1,19 +1,15 @@
-import { LoginFormWrapper } from '@/components/auth/login-form-wrapper';
-import { Box } from 'lucide-react';
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
-export default function LoginPage() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <div className="flex flex-col items-center space-y-4">
-        <div className="flex items-center space-x-2">
-          <Box className="h-8 w-8 text-primary" />
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">Unicube</h1>
-        </div>
-        <p className="text-muted-foreground">Welcome to Tranquil Escapes</p>
-      </div>
-      <div className="mt-8 w-full max-w-sm">
-        <LoginFormWrapper />
-      </div>
-    </main>
-  );
-}
+const firebaseConfig = {
+  projectId: "studio-8277363755-4c2a2",
+  appId: "1:216727523191:web:e2175a22c118a6669a1b72",
+  apiKey: "AIzaSyBd8hMkCmlvFinA9JyjpoDRcWf0YzqpVa4",
+  authDomain: "studio-8277363755-4c2a2.firebaseapp.com",
+  measurementId: "",
+  messagingSenderId: "216727523191",
+};
+
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
+export const auth = getAuth(app);
